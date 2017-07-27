@@ -19,6 +19,7 @@
 			username-parameter="username"
 			password-parameter="password" />
 		<security:logout logout-success-url="/login?logout" />
+		<security:headers  />
 	</security:http>
 
 	<security:authentication-manager>

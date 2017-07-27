@@ -53,21 +53,20 @@
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav masthead-nav pull-left">
 								<li class="active"><a href="<c:url value="/"/>">Home</a></li>
-								<li><a href="<c:url value="/login"/>">Movies</a></li>
-
+								<li><a href="<c:url value="/movies"/>">Movies</a></li>
 							</ul>
 							<ul class="nav masthead-nav">
 								<c:if test="${pageContext.request.userPrincipal.name != null}">
-									<li><a>Welcome:
-											${pageContext.request.userPrincipal.name}</a></li>
+									<li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
 									<c:if
 										test="${pageContext.request.userPrincipal.name != 'admin'}">
-
+										<li><a href="<c:url value="/customer/profile"/>">Profile</a></li>
 									</c:if>
 									<c:if
 										test="${pageContext.request.userPrincipal.name == 'admin'}">
 										<li><a href="<c:url value="/admin" />">Admin</a></li>
 									</c:if>
+									
 									<li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
 								</c:if>
 								<c:if test="${pageContext.request.userPrincipal.name == null}">
@@ -89,4 +88,4 @@
 	</div>
 
 
-	<div class="cover-container">
+	<div class="container">

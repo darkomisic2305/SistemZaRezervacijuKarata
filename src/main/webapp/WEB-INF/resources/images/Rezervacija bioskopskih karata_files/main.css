@@ -33,7 +33,7 @@
 }
 
 .login-container {
-	width: 30%;
+	width: 40%;
 	margin: auto;
 	margin-top: 100px;
 }
@@ -48,7 +48,3 @@
 	margin-top: -30px;
 }
 
-.register-success-container {
-	margin: auto;
-	margin-top: 100px;
-}

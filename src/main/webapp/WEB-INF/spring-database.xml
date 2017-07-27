@@ -17,8 +17,8 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<props>
-			    <prop key="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/sistem_za_rezervaciju_karata</prop>
-	         	<prop key="hibernate.connection.userkey">root</prop>
+			    <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/sistem_za_rezervaciju_karata</prop>
+	         	<prop key="hibernate.connection.username">root</prop>
 	         	<prop key="hibernate.connection.password"></prop>
 	         	<prop key="hibernate.connection.pool_size">10</prop>
          
@@ -30,12 +30,13 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<!--Opcija koja automatski commit-uje sql u bazi-->
-         		<prop key="hibernate.connection.autocommit">true</prop>
+         		<!-- <prop key="hibernate.connection.autocommit">true</prop>
          		<prop key="hibernate.c3p0.min_size">5</prop>
 	         	<prop key="hibernate.c3p0.max_size">20</prop>
 	         	<prop key="hibernate.c3p0.timeout">300</prop>
 	         	<prop key="hibernate.c3p0.max_statements">50</prop>
 	         	<prop key="hibernate.c3p0.idle_test_period">3000</prop>
+	         	 -->
 			</props>
 		</property>
 

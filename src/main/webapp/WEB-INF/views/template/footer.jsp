@@ -1,6 +1,6 @@
 		  <!-- FOOTER -->
           <div class="mastfoot">
-            <div class="inner">
+            <div class="inner container">
               <p>&copy;Copyright 2017 | Darko Misic 2305 | <a href="http://www.metropolitan.ac.rs">Univerzitet Metropolitan</a></p>
             </div>
           </div>
