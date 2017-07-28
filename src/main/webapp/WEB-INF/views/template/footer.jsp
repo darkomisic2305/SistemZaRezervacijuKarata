@@ -1,7 +1,8 @@
 		  <!-- FOOTER -->
           <div class="mastfoot">
             <div class="inner container">
-              <p>&copy;Copyright 2017 | Darko Misic 2305 | <a href="http://www.metropolitan.ac.rs">Univerzitet Metropolitan</a></p>
+              <p>&copy;Copyright 2017 | Darko Misic 2305 | <a href="<spring:message code="metropolitanLink" />"><spring:message code="metropolitan" /></a></p>
+
             </div>
           </div>
 

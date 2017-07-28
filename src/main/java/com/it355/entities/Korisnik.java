@@ -43,8 +43,7 @@ public class Korisnik implements Serializable {
 	@Column(name = "password")
 	private String password;
 	@Column(name = "pol")
-	@Enumerated(EnumType.STRING)
-	private Pol pol;
+	private String pol;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "datum_rodjenja")
 	private Date datumRodjenja;
@@ -52,7 +51,7 @@ public class Korisnik implements Serializable {
 	public Korisnik() {
 	}
 
-	public Korisnik(Integer id, String ime, String prezime, String email, String username, String password, Pol pol,
+	public Korisnik(Integer id, String ime, String prezime, String email, String username, String password, String pol,
 			Date datumRodjenja) {
 		this.id = id;
 		this.ime = ime;
@@ -112,11 +111,11 @@ public class Korisnik implements Serializable {
 		this.password = password;
 	}
 
-	public Pol getPol() {
+	public String getPol() {
 		return pol;
 	}
 
-	public void setPol(Pol pol) {
+	public void setPol(String pol) {
 		this.pol = pol;
 	}
 

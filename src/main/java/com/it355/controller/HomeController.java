@@ -1,7 +1,10 @@
 package com.it355.controller;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,9 @@ import com.it355.service.MailService;
 public class HomeController {
 	
 	@Autowired
+	private MessageSource messageSource;
+	
+	@Autowired
 	private MailService mailService;
 	
 	@RequestMapping("/")
@@ -23,21 +29,14 @@ public class HomeController {
 		return "home";
 	}
 	
-	/*
-	@RequestMapping("/sendMail")
-	public String sendMail() {
-		mailService.sendMail("darkomisic94@gmail.com", "test", "testiranje");
-		return "redirect:/";
-	}*/
-	
 	@RequestMapping("/login")
-	public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
+	public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model, Locale locale) {
 		if(error != null) {
-			model.addAttribute("error", "Invalid username and/or password.");
+			model.addAttribute("error", messageSource.getMessage("pogresniPodaci", new Object[] {}, locale));
 		}
 		
 		if(logout != null) {
-			model.addAttribute("msg", "You have been logged out successfully.");
+			model.addAttribute("msg", messageSource.getMessage("uspesanLogout", new Object[] {}, locale));
 		}
 		
 		return "login";

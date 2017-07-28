@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +11,7 @@
 <meta name="author" content="">
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
-<title>Rezervacija bioskopskih karata</title>
+<title><spring:message code="title" /></title>
 
 <!-- Bootstrap core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -20,16 +21,19 @@
 <!-- Style for login page -->
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"><\/script>')
-	</script>
-	<script type="text/javascript" src="<c:url value="/resources/js/main.js" />"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	window.jQuery
+			|| document
+					.write('<script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"><\/script>')
+</script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/main.js" />"></script>
 </head>
 
 <body>
+
+
 	<div class="navbar-wrapper">
 
 
@@ -46,33 +50,56 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Cinema Reservation System</a>
+						<a class="navbar-brand" href="<c:url value="/" />"><spring:message code="title" /></a>
 					</div>
-					
-					<nav class=""> <!-- navbar -->
+
+					<nav class="">
+						<!-- navbar -->
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav masthead-nav pull-left">
-								<li class="active"><a href="<c:url value="/"/>">Home</a></li>
-								<li><a href="<c:url value="/movies"/>">Movies</a></li>
+								<li><a href="<c:url value="/"/>"><spring:message code="filmovi" /></a></li>
 							</ul>
 							<ul class="nav masthead-nav">
 								<c:if test="${pageContext.request.userPrincipal.name != null}">
-									<li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
-									<c:if
-										test="${pageContext.request.userPrincipal.name != 'admin'}">
-										<li><a href="<c:url value="/customer/profile"/>">Profile</a></li>
+									<li><a><spring:message code="dobrodosli" />: ${pageContext.request.userPrincipal.name}</a></li>
+									<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+										<li><a href="<c:url value="/customer/profile"/>"><spring:message code="profil" /></a></li>
 									</c:if>
-									<c:if
-										test="${pageContext.request.userPrincipal.name == 'admin'}">
-										<li><a href="<c:url value="/admin" />">Admin</a></li>
+									<c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
+										<li><a href="<c:url value="/admin" />"><spring:message code="admin" /></a></li>
 									</c:if>
-									
-									<li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+
+									<li><a href="<c:url value="/j_spring_security_logout" />"><spring:message code="logout" /></a></li>
+
 								</c:if>
 								<c:if test="${pageContext.request.userPrincipal.name == null}">
-									<li><a href="<c:url value="/login" />">Login</a></li>
-									<li><a href="<c:url value="/register" />">Register</a></li>
+									<li><a href="<c:url value="/login" />"><spring:message code="login" /></a></li>
+									<li><a href="<c:url value="/register" />"><spring:message code="registracija" /></a></li>
 								</c:if>
+								<li>
+									<div class="dropdown">
+										<c:if test="${pageContext.response.locale.language == 'sr'}">
+											<button class="dropbtn"><spring:message code="jezik" /> <span class="glyphicon glyphicon-triangle-bottom"></span></button>
+										</c:if>
+										<c:if test="${pageContext.response.locale.language == 'en'}">
+											<button class="dropbtn"><spring:message code="jezik" /> <span class="glyphicon glyphicon-triangle-bottom"></span></button>
+										</c:if>
+										<div class="dropdown-content">
+											<a href="?language=sr">SR <span class="flag"><img
+													width="20px" height="15px"
+													src="<c:url value="/resources/images/sr_flag.png" />"
+													alt="EN"></span></a> 
+													
+											<a href="?language=en">EN <span
+												class="flag"><img width="20px" height="15px"
+													src="<c:url value="/resources/images/en_flag.png" />"
+													alt="EN"></span></a>
+
+										</div>
+									</div> 
+
+								</li>
+
 							</ul>
 						</div>
 					</nav>

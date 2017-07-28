@@ -1,10 +1,13 @@
 package com.it355.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,30 +16,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.it355.entities.Korisnik;
+import com.it355.entities.data.Pol;
 import com.it355.service.KorsinikService;
+import com.it355.service.MailService;
 
 @Controller
 public class RegisterController {
 
 	@Autowired
+	private MessageSource messageSource;
+	
+	@Autowired
 	private KorsinikService korisnikService;
+	
+	@Autowired
+	private MailService mailService;
 
 	@RequestMapping("/register")
-	public String register(Model model) {
+	public String register(Model model, Locale locale) {
 		Korisnik korisnik = new Korisnik();
-
+		List<String> polovi = new ArrayList<String>();
+		polovi.add(messageSource.getMessage("muski", new Object[] {}, locale));
+		polovi.add(messageSource.getMessage("zenski", new Object[] {}, locale));
+		
 		model.addAttribute("korisnik", korisnik);
+		model.addAttribute("polovi", polovi);
+		
 		return "register";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPost(@Valid @ModelAttribute("korisnik") Korisnik korisnik, BindingResult result,
-			Model model) {
+			Model model, Locale locale) {
 
-		System.err.println("Korisnik u kontroleru: " + korisnik);
 		if (result.hasErrors()) {
-			System.err.println("Ima gresaka.");
-			System.err.println("Broj gresaka: " + result.getAllErrors().get(0).toString());
 			return "register";
 		}
 
@@ -45,19 +58,30 @@ public class RegisterController {
 		System.err.println("Lista korisnika: " + listaKorsinika);
 		for (int i = 0; i < listaKorsinika.size(); i++) {
 			if (korisnik.getEmail().equals(listaKorsinika.get(i).getEmail())) {
-				model.addAttribute("emailMsg", "Email koji ste uneli vec postoji.");
+				model.addAttribute("emailMsg", messageSource.getMessage("emailMsg", new Object[] {}, locale));
 
 				return "register";
 			}
 
 			if (korisnik.getUsername().equals(listaKorsinika.get(i).getUsername())) {
-				model.addAttribute("usernameMsg", "Username koji ste uneli vec postoji.");
+				model.addAttribute("usernameMsg", messageSource.getMessage("usernameMsg", new Object[] {}, locale));
 
 				return "register";
 			}
 		}
+		
+		if(locale.getLanguage().equals("en")) {
+			if(korisnik.getPol().equals("Male")) {
+				korisnik.setPol("Muški");
+			} else {
+				korisnik.setPol("Ženski");
+			}
+			
+		}
 		korisnikService.addKorisnik(korisnik);
-
+		
+		mailService.sendRegisterEMail(korisnik, locale);
+		
 		return "registerSuccess";
 	}
 }

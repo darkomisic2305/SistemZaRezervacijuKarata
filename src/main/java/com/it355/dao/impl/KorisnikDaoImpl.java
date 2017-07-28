@@ -14,6 +14,7 @@ import com.it355.dao.KorisnikDao;
 import com.it355.entities.Korisnik;
 import com.it355.entities.User;
 import com.it355.entities.UserRole;
+import com.it355.service.MailService;
 
 @Repository
 @Transactional
@@ -21,22 +22,18 @@ public class KorisnikDaoImpl implements KorisnikDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+		
 	@Override
 	public void addKorisnik(Korisnik korisnik) {
-		System.err.println("Usao u metodu addKorisnik");
 		
 		Session session = sessionFactory.getCurrentSession();
-		System.err.println("Session: " + session);
 		session.save(korisnik);
 		
-		System.err.println("Korisnik: " + korisnik);
 		User user = new User();
 		user.setUsername(korisnik.getUsername());
 		user.setPassword(korisnik.getPassword());
 		user.setEnabled(true);
 		
-		System.err.println("User: " + user);
 		UserRole userRole = new UserRole();
 		userRole.setUsername(korisnik.getUsername());
 		userRole.setRole("ROLE_USER");

@@ -4,13 +4,13 @@
 <div class="">
 	<div class="container register-success-container">
 
-		<h1>Cestitamo! Uspesno ste izvrsili registraciju.</h1>
+		<h1><spring:message code="uspesnaRegistracija" /></h1>
+		<p><spring:message code="emailPotvrda" /></p>
 		<h1>
-			<a class="btn btn-primary" href="<c:url value="/login" />">Login</a>
+			<a class="btn btn-primary" href="<c:url value="/login" />"><spring:message code="login" /></a>
 		</h1>
 		<h1>
-			<a class="btn btn-default" href="<c:url value="/" />">Vrati se na
-				pocetnu stranu</a>
+			<a class="btn btn-default" href="<c:url value="/" />"><spring:message code="pocetnaStrana" /></a>
 		</h1>
 	</div>
 </div>
