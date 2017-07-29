@@ -2,6 +2,7 @@ package com.it355.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.it355.entities.data.Pol;
@@ -27,7 +30,7 @@ public class Korisnik implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
-	@NotEmpty(message = "Morate uneti vrednost za ime.")
+	@NotEmpty
 	@Column(name = "ime")
 	private String ime;
 	@NotEmpty(message = "Morate uneti vrednost za prezime.")
@@ -42,6 +45,7 @@ public class Korisnik implements Serializable {
 	@NotEmpty(message = "Morate uneti vrednost za password.")
 	@Column(name = "password")
 	private String password;
+	@NotEmpty(message = "Morate uneti vrednost za pol.")
 	@Column(name = "pol")
 	private String pol;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

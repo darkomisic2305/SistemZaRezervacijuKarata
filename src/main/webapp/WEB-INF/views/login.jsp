@@ -17,7 +17,7 @@
 				</c:if>
 				<div class="form-group">
 					<label for="username"><spring:message code="username" />: </label>
-					<input type="text" id="username" name="username" class="form-control" />
+					<input type="text" id="username" name="username" class="form-control" autofocus="autofocus"/>
 				</div>
 				<div class="form-group">
 					<label for="password"><spring:message code="password" />: </label>

@@ -12,6 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.it355.entities.data.Zanr;
 
@@ -20,7 +23,7 @@ import com.it355.entities.data.Zanr;
 public class Film implements Serializable {
 
 	private static final long serialVersionUID = -2778636544416164667L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -32,7 +35,7 @@ public class Film implements Serializable {
 	@Column(name = "pocetak_prikazivanja")
 	private Date pocetakPrikazivanja;
 	@Column(name = "duzina_trajanja")
-	private Duration duzinaTrajanja;
+	private int duzinaTrajanja;
 	@Column(name = "drzava")
 	private String drzava;
 	@Column(name = "godina")
@@ -40,12 +43,17 @@ public class Film implements Serializable {
 	@Column(name = "zanr")
 	@Enumerated(EnumType.STRING)
 	private Zanr zanr;
+	@Column(name = "opis")
+	private String opis;
+
+	@Transient
+	private MultipartFile slika;
 
 	public Film() {
 	}
 
-	public Film(Integer id, String naslov, String originalniNaslov, Date pocetakPrikazivanja, Duration duzinaTrajanja,
-			String drzava, String godina, Zanr zanr) {
+	public Film(Integer id, String naslov, String originalniNaslov, Date pocetakPrikazivanja, int duzinaTrajanja,
+			String drzava, String godina, Zanr zanr, String opis) {
 		super();
 		this.id = id;
 		this.naslov = naslov;
@@ -55,6 +63,7 @@ public class Film implements Serializable {
 		this.drzava = drzava;
 		this.godina = godina;
 		this.zanr = zanr;
+		this.opis = opis;
 	}
 
 	public Integer getId() {
@@ -89,11 +98,11 @@ public class Film implements Serializable {
 		this.pocetakPrikazivanja = pocetakPrikazivanja;
 	}
 
-	public Duration getDuzinaTrajanja() {
+	public int getDuzinaTrajanja() {
 		return duzinaTrajanja;
 	}
 
-	public void setDuzinaTrajanja(Duration duzinaTrajanja) {
+	public void setDuzinaTrajanja(int duzinaTrajanja) {
 		this.duzinaTrajanja = duzinaTrajanja;
 	}
 
@@ -121,11 +130,27 @@ public class Film implements Serializable {
 		this.zanr = zanr;
 	}
 
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
+
+	public MultipartFile getSlika() {
+		return slika;
+	}
+
+	public void setSlika(MultipartFile slika) {
+		this.slika = slika;
+	}
+
 	@Override
 	public String toString() {
 		return "Film [naslov=" + naslov + ", originalniNaslov=" + originalniNaslov + ", pocetakPrikazivanja="
 				+ pocetakPrikazivanja + ", duzinaTrajanja=" + duzinaTrajanja + ", drzava=" + drzava + ", godina="
-				+ godina + ", zanr=" + zanr + "]";
+				+ godina + ", zanr=" + zanr + ", opis=" + opis + "]";
 	}
 
 }

@@ -10,7 +10,7 @@
 			<hr>
 			<div class="form-group">
 				<label for="ime"><spring:message code="ime" /></label> <form:errors path="ime" cssStyle="color: #ff0000" />
-				<form:input type="text" path="ime" id="ime" class="form-control"/>
+				<form:input type="text" path="ime" id="ime" class="form-control" autofocus="autofocus"/>
 			</div>
 			
 			<div class="form-group">
@@ -45,8 +45,6 @@
 				<label for="password"><spring:message code="password" /></label> <form:errors path="password" cssStyle="color: #ff0000" />
 				<form:input type="password" path="password" id="password" class="form-control" />
 			</div>
-
-			<br>
 
 			<input type="submit" value="<spring:message code="registrujSe" />" class="btn btn-primary">
 			<a href="<c:url value="/"/>"

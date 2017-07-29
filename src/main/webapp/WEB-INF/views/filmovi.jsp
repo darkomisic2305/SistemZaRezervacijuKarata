@@ -1,18 +1,30 @@
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 
-<div class="container" >
+<div class="container">
 
-	<c:forEach items="${filmovi}" var="film">
-		<div style="display: inline-block; text-align: center;">
-			<div style="padding: 10px;">
-				<a href="<c:url value="/film/${film.id}" />" style="text-align: center; color: #eeeeee;">
-					<img src="http://slike1.blitz-cinestar.hr/Plakati/17.3.2017_10_54_47_Fast_8_RS__novi.jpg?preset=thumb-500" width="223px" height="324px">
-					<h4>${film.naslov}</h4>
-				</a>
-			</div>			
-		</div>
-	
-	</c:forEach>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr class="info" style="color: black;">
+				<th>Naslov</th>
+				<th>Pocetak prikazivanja</th>
+				<th>Trajanje</th>
+				<th>Zanr</th>
+				<th></th>
+			</tr>
+			<c:forEach items="${filmovi}" var="film">
+				<tr class="active" style="color: black;">
+					<td>${film.naslov}</td>
+					<td>${film.pocetakPrikazivanja}</td>
+					<td>${film.duzinaTrajanja}</td>
+					<td>${film.zanr}</td>
+					<td><a
+						href="<c:url value="/film/${film.id}" />">
+							<span class="glyphicon glyphicon-info-sign"></span>
+					</a></td>
+				</tr>
+			</c:forEach>
+		</thead>
+	</table>
 
 
 

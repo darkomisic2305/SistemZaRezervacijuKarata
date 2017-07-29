@@ -57,18 +57,23 @@
 						<!-- navbar -->
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav masthead-nav pull-left">
-								<li><a href="<c:url value="/"/>"><spring:message code="filmovi" /></a></li>
+								<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+									<li><a href="<c:url value="/"/>"><spring:message code="filmovi" /></a></li>
+								</c:if>
+								
+								<c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
+									<li><a href="<c:url value="/admin/filmovi" />"><spring:message code="filmovi" /></a></li>
+									<li><a href="<c:url value="/admin/sale" />"><spring:message code="sale" /></a></li>
+									<li><a href="<c:url value="/admin/projekcije" />"><spring:message code="projekcije" /></a></li>
+									<li><a href="<c:url value="/admin/korisnici" />"><spring:message code="korisnici" /></a></li>
+								</c:if>
 							</ul>
 							<ul class="nav masthead-nav">
 								<c:if test="${pageContext.request.userPrincipal.name != null}">
 									<li><a><spring:message code="dobrodosli" />: ${pageContext.request.userPrincipal.name}</a></li>
 									<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
-										<li><a href="<c:url value="/customer/profile"/>"><spring:message code="profil" /></a></li>
+										<li><a href="<c:url value="/user/profile/${pageContext.request.userPrincipal.name}"/>"><spring:message code="profil" /></a></li>
 									</c:if>
-									<c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
-										<li><a href="<c:url value="/admin" />"><spring:message code="admin" /></a></li>
-									</c:if>
-
 									<li><a href="<c:url value="/j_spring_security_logout" />"><spring:message code="logout" /></a></li>
 
 								</c:if>

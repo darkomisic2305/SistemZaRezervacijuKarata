@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.it355.dao.KorisnikDao;
 import com.it355.entities.Korisnik;
+import com.it355.entities.Rezervacija;
 import com.it355.service.KorsinikService;
 
 @Service
@@ -28,6 +29,16 @@ public class KorisnikServiceImpl implements KorsinikService {
 	@Override
 	public Korisnik getKorsinikById(int id) {
 		return korisnikDao.getKorsinikById(id);
+	}
+
+	@Override
+	public Korisnik getKorsinikByUsername(String username) {
+		return korisnikDao.getKorsinikByUsername(username);
+	}
+
+	@Override
+	public List<Rezervacija> getListaRezervacijaPoKorisniku(Korisnik korisnik) {
+		return korisnikDao.getListaRezervacijaPoKorisniku(korisnik);
 	}
 
 }

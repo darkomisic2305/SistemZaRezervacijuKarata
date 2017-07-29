@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.it355.dao.KorisnikDao;
 import com.it355.entities.Korisnik;
+import com.it355.entities.Rezervacija;
 import com.it355.entities.User;
 import com.it355.entities.UserRole;
 import com.it355.service.MailService;
@@ -56,6 +57,20 @@ public class KorisnikDaoImpl implements KorisnikDao {
 		Session session = sessionFactory.getCurrentSession();
 		
 		return (Korisnik)session.createCriteria(Korisnik.class).add(Restrictions.eq("id", id)).uniqueResult();
+	}
+
+	@Override
+	public Korisnik getKorsinikByUsername(String username) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		return (Korisnik)session.createCriteria(Korisnik.class).add(Restrictions.eq("username", username)).uniqueResult();
+	}
+
+	@Override
+	public List<Rezervacija> getListaRezervacijaPoKorisniku(Korisnik korisnik) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		return session.createCriteria(Rezervacija.class).add(Restrictions.eq("korisnik", korisnik)).list();
 	}
 
 }
