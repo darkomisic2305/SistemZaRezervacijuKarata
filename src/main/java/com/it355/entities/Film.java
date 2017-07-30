@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.it355.entities.data.Zanr;
@@ -32,6 +33,7 @@ public class Film implements Serializable {
 	private String naslov;
 	@Column(name = "originalni_naslov")
 	private String originalniNaslov;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "pocetak_prikazivanja")
 	private Date pocetakPrikazivanja;
 	@Column(name = "duzina_trajanja")

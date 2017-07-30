@@ -4,8 +4,8 @@
 
 <div class="">
 	<div class="container add-film-container">
-		<form:form name="registerForm" action="${pageContext.request.contextPath}/addFilm"
-			method="post" commandName="film">
+		<form:form name="addFilmForm" action="${pageContext.request.contextPath}/admin/addFilm"
+			method="post" commandName="film" enctype="multipart/form-data">
 			<h1><spring:message code="dodavanjeFilma" /></h1>
 			<hr>
 			<div class="form-group">
@@ -43,7 +43,12 @@
 				<label for="opis"><spring:message code="opis" /></label> <form:errors path="opis" cssStyle="color: #ff0000" />
 				<form:textarea type="text" path="opis" id="opis" class="form-control" autofocus="autofocus"/>
 			</div>
-			
+			<hr>
+			<div class="form-group">
+				<label class="control-label" for="slika"><spring:message code="dodajSliku" /></label>
+				<form:input id="slika" path="slika" type="file" class="input-large" style="display: center"/>
+			</div>
+			<hr>
 			<input type="submit" value="<spring:message code="dodajFilm" />" class="btn btn-primary">
 			<a href="<c:url value="/"/>"
 				class="btn btn-default"><spring:message code="odustani" /></a>

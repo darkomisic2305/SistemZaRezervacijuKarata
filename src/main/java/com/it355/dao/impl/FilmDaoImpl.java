@@ -25,4 +25,11 @@ public class FilmDaoImpl implements FilmDao {
 		return session.createCriteria(Film.class).list();
 	}
 
+	@Override
+	public void addFilm(Film film) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.save(film);
+	}
+
 }

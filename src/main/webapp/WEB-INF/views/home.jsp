@@ -6,7 +6,7 @@
 		<div style="display: inline-block; text-align: center;">
 			<div style="padding: 10px;">
 				<a href="<c:url value="/film/${film.id}" />" style="text-align: center; color: #eeeeee;">
-					<img src="http://slike1.blitz-cinestar.hr/Plakati/17.3.2017_10_54_47_Fast_8_RS__novi.jpg?preset=thumb-500" width="223px" height="324px">
+					<img src="<c:url value="/resources/images/${film.id}.png" />" width="223px" height="324px">
 					<h4>${film.naslov}</h4>
 				</a>
 			</div>			

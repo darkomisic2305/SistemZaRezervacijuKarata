@@ -7,4 +7,5 @@ import com.it355.entities.Film;
 public interface FilmService {
 
 	public List<Film> getListaSvihFilmova();
+	public void addFilm(Film film);
 }

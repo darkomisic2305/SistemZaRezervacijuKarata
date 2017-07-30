@@ -20,4 +20,9 @@ public class FilmServiceImpl implements FilmService {
 		return filmDao.getListaSvihFilmova();
 	}
 
+	@Override
+	public void addFilm(Film film) {
+		filmDao.addFilm(film);
+	}
+
 }
