@@ -1,34 +1,27 @@
 <%@include file="/WEB-INF/views/template/header.jsp"%>
-
+<c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
+	<hr>
+	<a href="<c:url value="/admin/addFilm" />" class="btn btn-primary btn-lg"><spring:message code="dodajNoviFilm"/></a>
+	<hr>
+</c:if>
 <div class="container" >
-
+	
 	<c:forEach items="${filmovi}" var="film">
 		<div style="display: inline-block; text-align: center;">
 			<div style="padding: 10px;">
 				<a href="<c:url value="/film/${film.id}" />" style="text-align: center; color: #eeeeee;">
-					<img src="<c:url value="/resources/images/${film.id}.png" />" width="223px" height="324px">
+					<img src="<c:url value="/resources/images/${film.id}.png" />" class = "film-img">
 					<h4>${film.naslov}</h4>
+					<c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
+						<a href="<c:url value="/admin/editFilm/${film.id}" />" class="btn btn-default"><spring:message code="izmeni"/></a>
+						<a href="<c:url value="/admin/deleteFilm/${film.id}" />" class="btn btn-danger"><spring:message code="obrisi"/></a>
+					</c:if>
 				</a>
-			</div>			
+				
+			</div>		
+			
 		</div>
-	
 	</c:forEach>
-
-
-
-	<c:if test="${not empty pageContext.request.userPrincipal}">
-
-		<c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
-
-        ADMIN ROLA
-
-    </c:if>
-		<c:if test="${pageContext.request.isUserInRole('ROLE_USER')}">
-
-        USER ROLA
-
-    </c:if>
-	</c:if>
 </div>
 
 

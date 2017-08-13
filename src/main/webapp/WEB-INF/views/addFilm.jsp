@@ -31,23 +31,28 @@
 			
 			<div class="form-group">
 				<label for="godina"><spring:message code="godina" /></label> <form:errors path="godina" cssStyle="color: #ff0000" />
-				<form:input type="number" path="godina" id="godina" class="form-control" autofocus="autofocus"/>
+				<form:input type="number" path="godina" id="godina" class="form-control"/>
 			</div>
 			
 			<div class="form-group">
 				<label for="drzava"><spring:message code="drzava" /></label> <form:errors path="drzava" cssStyle="color: #ff0000" />
-				<form:input type="text" path="drzava" id="drzava" class="form-control" autofocus="autofocus"/>
+				<form:input type="text" path="drzava" id="drzava" class="form-control"/>
 			</div>
 
 			<div class="form-group">
 				<label for="opis"><spring:message code="opis" /></label> <form:errors path="opis" cssStyle="color: #ff0000" />
-				<form:textarea type="text" path="opis" id="opis" class="form-control" autofocus="autofocus"/>
+				<form:textarea type="text" path="opis" id="opis" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="youtubeUrl"><spring:message code="youtubeUrl" /></label> <form:errors path="youtubeUrl" cssStyle="color: #ff0000" />
+				<form:input type="text" path="youtubeUrl" id="youtubeUrl" class="form-control"/>
 			</div>
 			<hr>
 			<div class="form-group">
 				<label class="control-label" for="slika"><spring:message code="dodajSliku" /></label>
 				<form:input id="slika" path="slika" type="file" class="input-large" style="display: center"/>
 			</div>
+			
 			<hr>
 			<input type="submit" value="<spring:message code="dodajFilm" />" class="btn btn-primary">
 			<a href="<c:url value="/"/>"

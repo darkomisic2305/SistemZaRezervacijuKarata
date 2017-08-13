@@ -47,6 +47,8 @@ public class Film implements Serializable {
 	private Zanr zanr;
 	@Column(name = "opis")
 	private String opis;
+	@Column(name = "youtube_url")
+	private String youtubeUrl;
 
 	@Transient
 	private MultipartFile slika;
@@ -55,7 +57,7 @@ public class Film implements Serializable {
 	}
 
 	public Film(Integer id, String naslov, String originalniNaslov, Date pocetakPrikazivanja, int duzinaTrajanja,
-			String drzava, String godina, Zanr zanr, String opis) {
+			String drzava, String godina, Zanr zanr, String opis, String youtubeUrl) {
 		super();
 		this.id = id;
 		this.naslov = naslov;
@@ -66,6 +68,7 @@ public class Film implements Serializable {
 		this.godina = godina;
 		this.zanr = zanr;
 		this.opis = opis;
+		this.youtubeUrl = youtubeUrl;
 	}
 
 	public Integer getId() {
@@ -148,11 +151,19 @@ public class Film implements Serializable {
 		this.slika = slika;
 	}
 
+	public String getYoutubeUrl() {
+		return youtubeUrl;
+	}
+
+	public void setYoutubeUrl(String youtubeUrl) {
+		this.youtubeUrl = youtubeUrl;
+	}
+
 	@Override
 	public String toString() {
 		return "Film [naslov=" + naslov + ", originalniNaslov=" + originalniNaslov + ", pocetakPrikazivanja="
 				+ pocetakPrikazivanja + ", duzinaTrajanja=" + duzinaTrajanja + ", drzava=" + drzava + ", godina="
-				+ godina + ", zanr=" + zanr + ", opis=" + opis + "]";
+				+ godina + ", zanr=" + zanr + ", opis=" + opis + ", youtubeUrl=" + youtubeUrl + "]";
 	}
 
 }
