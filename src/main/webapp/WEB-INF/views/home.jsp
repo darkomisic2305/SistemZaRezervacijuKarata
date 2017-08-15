@@ -1,7 +1,7 @@
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 <c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
 	<hr>
-	<a href="<c:url value="/admin/addFilm" />" class="btn btn-primary btn-lg"><spring:message code="dodajNoviFilm"/></a>
+	<a href="<c:url value="/admin/film/addFilm" />" class="btn btn-primary btn-lg"><spring:message code="dodajNoviFilm"/></a>
 	<hr>
 </c:if>
 <div class="container" >
@@ -13,8 +13,8 @@
 					<img src="<c:url value="/resources/images/${film.id}.png" />" class = "film-img">
 					<h4>${film.naslov}</h4>
 					<c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
-						<a href="<c:url value="/admin/editFilm/${film.id}" />" class="btn btn-default"><spring:message code="izmeni"/></a>
-						<a href="<c:url value="/admin/deleteFilm/${film.id}" />" class="btn btn-danger"><spring:message code="obrisi"/></a>
+						<a href="<c:url value="/admin/film/editFilm/${film.id}" />" class="btn btn-default"><spring:message code="izmeni"/></a>
+						<a href="<c:url value="/admin/film/deleteFilm/${film.id}" />" class="btn btn-danger"><spring:message code="obrisi"/></a>
 					</c:if>
 				</a>
 				

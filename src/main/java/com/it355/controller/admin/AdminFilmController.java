@@ -23,39 +23,38 @@ import com.it355.entities.Film;
 import com.it355.service.FilmService;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/film")
 public class AdminFilmController {
 
-private Path path;
-	
+	private Path path;
+
 	@Autowired
 	private FilmService filmService;
 
 	@RequestMapping("/addFilm")
 	public String addFilm(Model model) {
 		Film film = new Film();
-		
+
 		model.addAttribute("film", film);
-		
+
 		return "addFilm";
 	}
-	
+
 	@RequestMapping(value = "/addFilm", method = RequestMethod.POST)
 	public String addFilmPost(@Valid @ModelAttribute("film") Film film, Model model, BindingResult result,
 			HttpServletRequest request) {
-		
-		
-		if(result.hasErrors()) {
+
+		if (result.hasErrors()) {
 			return "addFilm";
 		}
-		
+
 		filmService.addFilm(film);
-		
+
 		MultipartFile slika = film.getSlika();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + film.getId() + ".png");
-		
-		if(slika != null && !slika.isEmpty()) {
+
+		if (slika != null && !slika.isEmpty()) {
 			try {
 				slika.transferTo(new File(path.toString()));
 			} catch (Exception e) {
@@ -63,21 +62,19 @@ private Path path;
 				throw new RuntimeException("Slika nije sacuvana.", e);
 			}
 		}
-		
-		
-		
+
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("/editFilm/{id}")
 	public String editFilm(@PathVariable("id") int id, Model model) {
 		Film film = filmService.getFilmById(id);
-		
+
 		model.addAttribute("film", film);
-		
+
 		return "editFilm";
 	}
-	
+
 	@RequestMapping(value = "/editFilm", method = RequestMethod.POST)
 	public String editFilmPost(@Valid @ModelAttribute("film") Film film, BindingResult result,
 			HttpServletRequest request) {
@@ -97,28 +94,28 @@ private Path path;
 				throw new RuntimeException("Slika nije sacuvana.", e);
 			}
 		}
-		
+
 		filmService.editFilm(film);
 
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("/deleteFilm/{id}")
 	public String deleteFilm(@PathVariable int id, Model model, HttpServletRequest request) {
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + id + ".png");
-		
-		if(Files.exists(path)) {
+
+		if (Files.exists(path)) {
 			try {
 				Files.delete(path);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		Film film = filmService.getFilmById(id);
 		filmService.deleteFilm(film);
-		
+
 		return "redirect:/";
 	}
 }

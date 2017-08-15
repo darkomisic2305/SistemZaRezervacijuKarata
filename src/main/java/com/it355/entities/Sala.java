@@ -28,13 +28,12 @@ public class Sala implements Serializable {
 	@Column(name = "broj_sedista")
 	private int brojSedista;
 	@Column(name = "tehnologija")
-	@Enumerated(EnumType.STRING)
-	private Tehnologija tehnologija;
+	private String tehnologija;
 
 	public Sala() {
 	}
 
-	public Sala(Integer id, String naziv, int brojSedista, Tehnologija tehnologija) {
+	public Sala(Integer id, String naziv, int brojSedista, String tehnologija) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -66,11 +65,11 @@ public class Sala implements Serializable {
 		this.brojSedista = brojSedista;
 	}
 
-	public Tehnologija getTehnologija() {
+	public String getTehnologija() {
 		return tehnologija;
 	}
 
-	public void setTehnologija(Tehnologija tehnologija) {
+	public void setTehnologija(String tehnologija) {
 		this.tehnologija = tehnologija;
 	}
 

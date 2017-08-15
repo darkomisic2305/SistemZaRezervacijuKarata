@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 <div class="col-md-12">
 	<h1>${film.naslov}</h1>
-	<iframe width="65%" height="400" src="https://www.youtube.com/embed/05uhLuJ7kZQ" frameborder="1" allowfullscreen></iframe>
+	<iframe width="65%" height="400" src="${film.youtubeUrl}" frameborder="1" allowfullscreen></iframe>
 	<br>
 	<br>
 </div>

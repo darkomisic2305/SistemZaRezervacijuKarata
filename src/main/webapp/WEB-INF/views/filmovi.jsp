@@ -27,7 +27,7 @@
 	</table>
 
 
-
+<!-- 
 	<c:if test="${not empty pageContext.request.userPrincipal}">
 
 		<c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
@@ -41,6 +41,7 @@
 
     </c:if>
 	</c:if>
+ -->
 </div>
 
 

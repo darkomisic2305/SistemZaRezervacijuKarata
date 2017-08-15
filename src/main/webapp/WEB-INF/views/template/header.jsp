@@ -62,10 +62,10 @@
 								</c:if>
 								
 								<c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
-									<li><a href="<c:url value="/admin/filmovi" />"><spring:message code="filmovi" /></a></li>
-									<li><a href="<c:url value="/admin/sale" />"><spring:message code="sale" /></a></li>
-									<li><a href="<c:url value="/admin/projekcije" />"><spring:message code="projekcije" /></a></li>
-									<li><a href="<c:url value="/admin/korisnici" />"><spring:message code="korisnici" /></a></li>
+									<li><a href="<c:url value="/" />"><spring:message code="filmovi" /></a></li>
+									<li><a href="<c:url value="/admin/sala/sveSale" />"><spring:message code="sale" /></a></li>
+									<li><a href="<c:url value="/admin/projekcija/sveProjekcije" />"><spring:message code="projekcije" /></a></li>
+									<li><a href="<c:url value="/admin/korisnik/sviKorisnici" />"><spring:message code="korisnici" /></a></li>
 								</c:if>
 							</ul>
 							<ul class="nav masthead-nav">
