@@ -12,7 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,15 +30,20 @@ public class Film implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
+	@NotEmpty
 	@Column(name = "naslov")
 	private String naslov;
+	@NotEmpty
 	@Column(name = "originalni_naslov")
 	private String originalniNaslov;
+	@NotEmpty
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "pocetak_prikazivanja")
 	private Date pocetakPrikazivanja;
+	@NotNull
 	@Column(name = "duzina_trajanja")
 	private int duzinaTrajanja;
+	@NotEmpty
 	@Column(name = "drzava")
 	private String drzava;
 	@Column(name = "godina")
@@ -44,8 +51,10 @@ public class Film implements Serializable {
 	@Column(name = "zanr")
 	@Enumerated(EnumType.STRING)
 	private Zanr zanr;
+	@NotEmpty
 	@Column(name = "opis")
 	private String opis;
+	@NotEmpty
 	@Column(name = "youtube_url")
 	private String youtubeUrl;
 

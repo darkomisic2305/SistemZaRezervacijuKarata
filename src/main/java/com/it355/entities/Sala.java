@@ -10,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.it355.entities.data.Tehnologija;
 
@@ -23,10 +27,12 @@ public class Sala implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
+	@NotEmpty
 	@Column(name = "naziv")
 	private String naziv;
 	@Column(name = "broj_sedista")
 	private int brojSedista;
+	@NotEmpty
 	@Column(name = "tehnologija")
 	private String tehnologija;
 

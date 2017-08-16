@@ -23,14 +23,19 @@
 				<form:input type="date" path="datumRodjenja" id="datumRodjenja" class="form-control" />
 			</div>
 			
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label for="pol"><spring:message code="pol" /></label> <form:errors path="pol" cssStyle="color: #ff0000" />
 				<form:select path="pol" id="pol" class="form-control">
 					<form:option value="" />
 					<form:options items="${polovi}"/>
 				</form:select>
+			</div> -->
+			<div class="form-group">
+				<label for="pol"><spring:message code="pol" /></label> <form:errors path="pol" cssStyle="color: #ff0000" />
+				<br>
+				<input type="radio" name="pol" value="<spring:message code="muski" />"> <spring:message code="muski" /></input>&nbsp&nbsp
+				<input type="radio" name="pol" value="<spring:message code="zenski" />"><spring:message code="zenski" /></input>
 			</div>
-			
 			<div class="form-group">
 				<label for="email"><spring:message code="email" /></label> <span style="color: #ff0000">${emailMsg}</span> <form:errors path="email" cssStyle="color: #ff0000" />
 				<form:input type="email" path="email" id="email" class="form-control" />

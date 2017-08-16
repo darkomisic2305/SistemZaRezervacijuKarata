@@ -14,15 +14,22 @@
 			</div>
 			<div class="form-group">
 				<label for="brojSedista"><spring:message code="brojSedista" /></label> <form:errors path="brojSedista" cssStyle="color: #ff0000" /> 
-				<form:input type="number" path="brojSedista" id="brojSedista" class="form-control" />
+				<form:input type="number" path="brojSedista" id="brojSedista" min="0" class="form-control" />
 			</div>			
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label for="tehnologija"><spring:message code="tehnologija" /></label> <form:errors path="tehnologija" cssStyle="color: #ff0000" />
 				<form:input type="text" path="tehnologija" id="tehnologija" class="form-control"/>
+			</div> -->
+			<div class="form-group">
+				<label for="tehnologija"><spring:message code="tehnologija" /></label> <form:errors path="tehnologija" cssStyle="color: #ff0000" />
+				<br>
+				<input type="radio" name="tehnologija" value="2D"> 2D</input><br>
+				<input type="radio" name="tehnologija" value="3D"> 3D</input>
+
 			</div>
 			
 			<hr>
-			<input type="submit" value="<spring:message code="dodajSalu" />" class="btn btn-primary">
+			<input type="submit" value="<spring:message code="dodajSalu" />"  class="btn btn-primary">
 			<a href="<c:url value="/admin/sala/sveSale"/>"
 				class="btn btn-default"><spring:message code="odustani" /></a>
 		</form:form>

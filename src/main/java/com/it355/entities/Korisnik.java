@@ -33,19 +33,19 @@ public class Korisnik implements Serializable {
 	@NotEmpty
 	@Column(name = "ime")
 	private String ime;
-	@NotEmpty(message = "Morate uneti vrednost za prezime.")
+	@NotEmpty
 	@Column(name = "prezime")
 	private String prezime;
-	@NotEmpty(message = "Morate uneti vrednost za email.")
+	@NotEmpty
 	@Column(name = "email")
 	private String email;
-	@NotEmpty(message = "Morate uneti vrednost za username.")
+	@NotEmpty
 	@Column(name = "username")
 	private String username;
-	@NotEmpty(message = "Morate uneti vrednost za password.")
+	@NotEmpty
 	@Column(name = "password")
 	private String password;
-	@NotEmpty(message = "Morate uneti vrednost za pol.")
+	@NotEmpty
 	@Column(name = "pol")
 	private String pol;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

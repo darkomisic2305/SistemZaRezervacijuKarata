@@ -4,9 +4,10 @@
 
 <div class="">
 	<div class="container add-film-container">
-		<form:form name="addFilmForm" action="${pageContext.request.contextPath}/admin/film/addFilm"
+		<form:form name="editFilmForm" action="${pageContext.request.contextPath}/admin/film/editFilm"
 			method="post" commandName="film" enctype="multipart/form-data">
-			<h1><spring:message code="dodavanjeFilma" /></h1>
+			<form:hidden path="id" value="${film.id}"/>
+			<h1><spring:message code="izmenaFilma" /></h1>
 			<hr>
 			<div class="form-group">
 				<label for="naslov"><spring:message code="naslov" /></label> <form:errors path="naslov" cssStyle="color: #ff0000" />
@@ -54,7 +55,7 @@
 			</div>
 			
 			<hr>
-			<input type="submit" value="<spring:message code="dodajFilm" />" class="btn btn-primary">
+			<input type="submit" value="<spring:message code="izmeni" />" class="btn btn-primary">
 			<a href="<c:url value="/"/>"
 				class="btn btn-default"><spring:message code="odustani" /></a>
 		</form:form>

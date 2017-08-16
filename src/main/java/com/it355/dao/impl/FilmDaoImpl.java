@@ -55,7 +55,6 @@ public class FilmDaoImpl implements FilmDao {
 	@Override
 	public void editFilm(Film film) {
 		Session session = sessionFactory.getCurrentSession();
-		
 		session.saveOrUpdate(film);
 		session.flush();
 	}

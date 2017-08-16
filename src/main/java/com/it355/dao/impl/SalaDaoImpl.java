@@ -43,7 +43,7 @@ public class SalaDaoImpl implements SalaDao {
 	@Override
 	public void editSala(Sala sala) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(sala);
+		session.saveOrUpdate(sala);
 		session.flush();
 	}
 

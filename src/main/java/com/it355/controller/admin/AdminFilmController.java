@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.it355.entities.Film;
 import com.it355.service.FilmService;
 
+import javassist.compiler.SyntaxError;
+
 @Controller
 @RequestMapping("/admin/film")
 public class AdminFilmController {
@@ -94,9 +96,7 @@ public class AdminFilmController {
 				throw new RuntimeException("Slika nije sacuvana.", e);
 			}
 		}
-
 		filmService.editFilm(film);
-
 		return "redirect:/";
 	}
 

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "projekcija")
 public class Projekcija implements Serializable {
@@ -22,12 +24,15 @@ public class Projekcija implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
+	@NotEmpty
 	@ManyToOne
 	@JoinColumn(name = "film_id", referencedColumnName = "id")
 	private Film film;
+	@NotEmpty
 	@ManyToOne
 	@JoinColumn(name = "sala_id", referencedColumnName = "id")
 	private Sala sala;
+	@NotEmpty
 	@Column(name = "datum_vreme")
 	private Date datumVreme;
 	@Column(name = "slobodno_sedista")

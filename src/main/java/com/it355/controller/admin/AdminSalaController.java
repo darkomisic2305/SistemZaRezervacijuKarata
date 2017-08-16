@@ -44,18 +44,16 @@ public class AdminSalaController {
 	}
 
 	@RequestMapping(value = "/addSala", method = RequestMethod.POST)
-	public String addSalaPost(@Valid @ModelAttribute("sala") Sala sala, Model model, BindingResult result,
+	public String addSalaPost(@Valid @ModelAttribute("sala") Sala sala, BindingResult result, Model model, 
 			HttpServletRequest request) {
 
-		System.err.println("usao u addSalaPost");
-		System.err.println("sala je " + sala);
 		if (result.hasErrors()) {
 			return "addSala";
 		}
-
+		
 		salaService.addSala(sala);
 
-		return "redirect:/";
+		return "redirect:/admin/sala/sveSale";
 	}
 
 	@RequestMapping("/editSala/{id}")
