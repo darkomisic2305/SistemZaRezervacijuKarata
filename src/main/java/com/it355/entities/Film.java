@@ -36,11 +36,10 @@ public class Film implements Serializable {
 	@NotEmpty
 	@Column(name = "originalni_naslov")
 	private String originalniNaslov;
-	@NotEmpty
+	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "pocetak_prikazivanja")
 	private Date pocetakPrikazivanja;
-	@NotNull
 	@Column(name = "duzina_trajanja")
 	private int duzinaTrajanja;
 	@NotEmpty

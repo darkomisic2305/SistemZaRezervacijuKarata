@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "projekcija")
@@ -24,29 +27,33 @@ public class Projekcija implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
-	@NotEmpty
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "film_id", referencedColumnName = "id")
 	private Film film;
-	@NotEmpty
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "sala_id", referencedColumnName = "id")
 	private Sala sala;
-	@NotEmpty
-	@Column(name = "datum_vreme")
-	private Date datumVreme;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "datum")
+	private Date datum;
+	@Pattern(regexp="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")
+	@Column(name = "vreme")
+	private String vreme;
 	@Column(name = "slobodno_sedista")
 	private int slobodnoSedista;
 
 	public Projekcija() {
 	}
 
-	public Projekcija(Integer id, Film film, Sala sala, Date datumVreme) {
+	public Projekcija(Integer id, Film film, Sala sala, Date datum, String vreme) {
 		super();
 		this.id = id;
 		this.film = film;
 		this.sala = sala;
-		this.datumVreme = datumVreme;
+		this.datum = datum;
+		this.vreme = vreme;
 		this.slobodnoSedista = sala.getBrojSedista();
 	}
 
@@ -74,12 +81,20 @@ public class Projekcija implements Serializable {
 		this.sala = sala;
 	}
 
-	public Date getDatumVreme() {
-		return datumVreme;
+	public Date getDatum() {
+		return datum;
 	}
 
-	public void setDatumVreme(Date datumVreme) {
-		this.datumVreme = datumVreme;
+	public void setDatum(Date datum) {
+		this.datum = datum;
+	}
+
+	public String getVreme() {
+		return vreme;
+	}
+
+	public void setVreme(String vreme) {
+		this.vreme = vreme;
 	}
 
 	public int getSlobodnoSedista() {
@@ -92,8 +107,8 @@ public class Projekcija implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Projekcija [film=" + film + ", sala=" + sala + ", datumVreme=" + datumVreme + ", slobodnoSedista="
-				+ slobodnoSedista + "]";
+		return "Projekcija [film=" + film + ", sala=" + sala + ", datum=" + datum + ", vreme=" + vreme
+				+ ", slobodnoSedista=" + slobodnoSedista + "]";
 	}
 
 }
