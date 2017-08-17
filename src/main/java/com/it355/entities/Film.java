@@ -1,7 +1,6 @@
 package com.it355.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.it355.entities.data.Zanr;
@@ -36,10 +33,9 @@ public class Film implements Serializable {
 	@NotEmpty
 	@Column(name = "originalni_naslov")
 	private String originalniNaslov;
-	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotEmpty
 	@Column(name = "pocetak_prikazivanja")
-	private Date pocetakPrikazivanja;
+	private String pocetakPrikazivanja;
 	@Column(name = "duzina_trajanja")
 	private int duzinaTrajanja;
 	@NotEmpty
@@ -63,7 +59,7 @@ public class Film implements Serializable {
 	public Film() {
 	}
 
-	public Film(Integer id, String naslov, String originalniNaslov, Date pocetakPrikazivanja, int duzinaTrajanja,
+	public Film(Integer id, String naslov, String originalniNaslov, String pocetakPrikazivanja, int duzinaTrajanja,
 			String drzava, String godina, Zanr zanr, String opis, String youtubeUrl) {
 		super();
 		this.id = id;
@@ -102,11 +98,11 @@ public class Film implements Serializable {
 		this.originalniNaslov = originalniNaslov;
 	}
 
-	public Date getPocetakPrikazivanja() {
+	public String getPocetakPrikazivanja() {
 		return pocetakPrikazivanja;
 	}
 
-	public void setPocetakPrikazivanja(Date pocetakPrikazivanja) {
+	public void setPocetakPrikazivanja(String pocetakPrikazivanja) {
 		this.pocetakPrikazivanja = pocetakPrikazivanja;
 	}
 

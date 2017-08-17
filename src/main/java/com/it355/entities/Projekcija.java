@@ -35,9 +35,9 @@ public class Projekcija implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "sala_id", referencedColumnName = "id")
 	private Sala sala;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotEmpty
 	@Column(name = "datum")
-	private Date datum;
+	private String datum;
 	@Pattern(regexp="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")
 	@Column(name = "vreme")
 	private String vreme;
@@ -47,7 +47,7 @@ public class Projekcija implements Serializable {
 	public Projekcija() {
 	}
 
-	public Projekcija(Integer id, Film film, Sala sala, Date datum, String vreme) {
+	public Projekcija(Integer id, Film film, Sala sala, String datum, String vreme) {
 		super();
 		this.id = id;
 		this.film = film;
@@ -81,11 +81,11 @@ public class Projekcija implements Serializable {
 		this.sala = sala;
 	}
 
-	public Date getDatum() {
+	public String getDatum() {
 		return datum;
 	}
 
-	public void setDatum(Date datum) {
+	public void setDatum(String datum) {
 		this.datum = datum;
 	}
 

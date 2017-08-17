@@ -76,7 +76,7 @@
 		<div style="margin-left: 50px; margin-right: 50px;">
 			<c:forEach items="${projekcije}" var="projekcija">
 				<a href="<c:url value="/" />" class="btn btn-primary" style="margin: 10px;">
-					<p>${projekcija.datumVreme}, ${projekcija.sala.naziv}</p>
+					<p>${projekcija.datum}, ${projekcija.vreme} - ${projekcija.sala.naziv}</p>
 				</a>
 			</c:forEach>
 		</div>

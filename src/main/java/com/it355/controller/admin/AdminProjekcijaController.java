@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.it355.entities.Film;
 import com.it355.entities.Projekcija;
@@ -61,16 +60,12 @@ public class AdminProjekcijaController {
 
 	@RequestMapping(value = "/addProjekcija", method = RequestMethod.POST)
 	public String addProjekcijaPost(@Valid @ModelAttribute("projekcija") Projekcija projekcija, BindingResult result, Model model, 
-			HttpServletRequest request, @ModelAttribute("film") Film film, @ModelAttribute("sala") Sala sala) {
+			HttpServletRequest request) {
 
 		if (result.hasErrors()) {
 			return "addProjekcija";
 		}
-		System.err.println("filmid =  " + film);
-		
-		projekcija.setFilm(film);
-		projekcija.setSala(sala);
-		
+				
 		projekcija.setSlobodnoSedista(projekcija.getSala().getBrojSedista());
 		projekcijaService.addProjekcija(projekcija);
 
@@ -81,20 +76,25 @@ public class AdminProjekcijaController {
 	public String editProjekcija(@PathVariable("id") int id, Model model) {
 		Projekcija projekcija = projekcijaService.getProjekcijaById(id);
 
+		List<Film> filmovi = filmService.getListaSvihFilmova();
+		List<Sala> sale = salaService.getListaSvihSala();
+	
 		model.addAttribute("projekcija", projekcija);
+		model.addAttribute("filmovi", filmovi);
+		model.addAttribute("sale", sale);
 
 		return "editProjekcija";
 	}
 
 	@RequestMapping(value = "/editProjekcija", method = RequestMethod.POST)
-	public String editProjekcijaPost(@Valid @ModelAttribute("projekcija") Projekcija projekcija, BindingResult result, @ModelAttribute("sala")Sala sala, 
+	public String editProjekcijaPost(@Valid @ModelAttribute("projekcija") Projekcija projekcija, BindingResult result, 
 			HttpServletRequest request) {
 		if (result.hasErrors()) {
 			return "editProjekcija";
 		}
-		System.err.println("PROJEKCIJA: " + projekcija);
-		System.err.println("SALA: " + sala);
-		projekcija.setSala(sala);
+		
+		projekcija.setSlobodnoSedista(projekcija.getSala().getBrojSedista());
+		
 		projekcijaService.editProjekcija(projekcija);
 
 		return "redirect:/admin/projekcija/sveProjekcije";
