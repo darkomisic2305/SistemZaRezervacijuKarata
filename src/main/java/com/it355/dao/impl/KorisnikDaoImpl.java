@@ -72,5 +72,25 @@ public class KorisnikDaoImpl implements KorisnikDao {
 		
 		return session.createCriteria(Rezervacija.class).add(Restrictions.eq("korisnik", korisnik)).list();
 	}
-
+	
+	@Override
+	public void deleteKorisnik(Korisnik korisnik) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.delete(korisnik);
+		session.getTransaction().commit();
+		session.flush();
+		
+		
+		UserRole role = (UserRole)session.createCriteria(UserRole.class).add(Restrictions.eq("username", korisnik.getUsername())).uniqueResult();
+		System.err.println("User role je: " + role);
+		session.delete(role);
+		session.getTransaction().commit();
+		session.flush();
+		User user = (User)session.createCriteria(User.class).add(Restrictions.eq("username", korisnik.getUsername())).uniqueResult();
+		System.err.println("User je: " + user);
+		session.delete(user);
+		session.flush();
+	}
+ 
 }

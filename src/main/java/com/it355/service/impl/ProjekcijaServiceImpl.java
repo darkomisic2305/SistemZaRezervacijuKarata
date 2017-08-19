@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.it355.dao.ProjekcijaDao;
 import com.it355.entities.Projekcija;
+import com.it355.entities.Rezervacija;
 import com.it355.service.ProjekcijaService;
 
 @Service
@@ -38,5 +39,10 @@ public class ProjekcijaServiceImpl implements ProjekcijaService {
 	@Override
 	public void deleteProjekcija(Projekcija projekcija) {
 		projekcijaDao.deleteProjekcija(projekcija);
+	}
+
+	@Override
+	public List<Rezervacija> getSveRezervacijeZaProjekciju(Projekcija projekcija) {
+		return projekcijaDao.getSveRezervacijeZaProjekciju(projekcija);
 	}
 }

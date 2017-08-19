@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.it355.entities.Film;
 import com.it355.entities.Projekcija;
+import com.it355.entities.Rezervacija;
 import com.it355.entities.Sala;
 import com.it355.service.FilmService;
 import com.it355.service.ProjekcijaService;
@@ -106,5 +107,16 @@ public class AdminProjekcijaController {
 		projekcijaService.deleteProjekcija(projekcija);
 
 		return "redirect:/admin/projekcija/sveProjekcije";
+	}
+	
+	@RequestMapping("/spisakRezervacija/{id}")
+	public String spisakRezervacija(@PathVariable int id, Model model, HttpServletRequest request) {
+		Projekcija projekcija = projekcijaService.getProjekcijaById(id);
+		List<Rezervacija> rezervacije = projekcijaService.getSveRezervacijeZaProjekciju(projekcija);
+		
+		model.addAttribute("projekcija", projekcija);
+		model.addAttribute("rezervacije", rezervacije);
+		
+		return "rezervacijePoProjekciji";
 	}
 }

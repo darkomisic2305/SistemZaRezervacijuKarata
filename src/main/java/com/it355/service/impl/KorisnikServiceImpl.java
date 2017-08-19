@@ -41,4 +41,9 @@ public class KorisnikServiceImpl implements KorsinikService {
 		return korisnikDao.getListaRezervacijaPoKorisniku(korisnik);
 	}
 
+	@Override
+	public void deleteKorisnik(Korisnik korisnik) {
+		korisnikDao.deleteKorisnik(korisnik);
+	}
+
 }

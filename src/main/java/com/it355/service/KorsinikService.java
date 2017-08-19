@@ -12,4 +12,5 @@ public interface KorsinikService {
 	public Korisnik getKorsinikById(int id);
 	public Korisnik getKorsinikByUsername(String username);
 	public List<Rezervacija> getListaRezervacijaPoKorisniku(Korisnik korisnik);
+	public void deleteKorisnik(Korisnik korisnik);
 }

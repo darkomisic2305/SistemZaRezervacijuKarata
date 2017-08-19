@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.it355.dao.ProjekcijaDao;
 import com.it355.entities.Projekcija;
+import com.it355.entities.Rezervacija;
 
 @Repository
 @Transactional
@@ -53,5 +54,12 @@ public class ProjekcijaDaoImpl implements ProjekcijaDao {
 		
 		session.delete(projekcija);
 		session.flush();
+	}
+
+	@Override
+	public List<Rezervacija> getSveRezervacijeZaProjekciju(Projekcija projekcija) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		return session.createCriteria(Rezervacija.class).add(Restrictions.eq("projekcija", projekcija)).list();
 	}
 }

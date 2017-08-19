@@ -15,10 +15,11 @@
 				<th><spring:message code="vreme" /></th>
 				<th><spring:message code="slobodnoSedista" /></th>
 				<th></th>
+				<th></th>
 			</tr>
 			<c:forEach items="${projekcije}" var="projekcija">
 				<tr class="info" style="color: black;">
-					<td>${projekcija.film.naslov}</td>
+					<td><a style="color: black;" href="<c:url value="/film/${projekcija.film.id}" />">${projekcija.film.naslov}</a></td>
 					<td>${projekcija.sala.naziv} - ${projekcija.sala.tehnologija}</td>
 					<td>${projekcija.datum}</td>
 					<td>${projekcija.vreme}</td>
@@ -32,6 +33,13 @@
 							class="glyphicon glyphicon-remove"></span> <spring:message
 								code="obrisi" />
 					</a></td>
+					<td>
+					<a style="color: black;"
+						href="<c:url value="/admin/projekcija/spisakRezervacija/${projekcija.id}" />"> <span
+							class="glyphicon glyphicon-list-alt"></span> <spring:message
+								code="spisakRezervacija" />
+					</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</thead>
