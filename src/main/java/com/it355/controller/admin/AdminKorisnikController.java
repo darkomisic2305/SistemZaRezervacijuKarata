@@ -12,14 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it355.entities.Korisnik;
 import com.it355.entities.Projekcija;
-import com.it355.service.KorsinikService;
+import com.it355.entities.User;
+import com.it355.service.KorisnikService;
 
 @Controller
 @RequestMapping("/admin/korisnik")
 public class AdminKorisnikController {
 
 	@Autowired
-	private KorsinikService korisnikService;
+	private KorisnikService korisnikService;
 	
 	@RequestMapping("/sviKorisnici")
 	public String korisnici(Model model) {
@@ -36,7 +37,7 @@ public class AdminKorisnikController {
 		System.err.println("Username je " + username);
 		Korisnik korisnik = korisnikService.getKorsinikByUsername(username);
 		korisnikService.deleteKorisnik(korisnik);
-
+		
 		return "redirect:/admin/korisnik/sviKorisnici";
 	}
 	

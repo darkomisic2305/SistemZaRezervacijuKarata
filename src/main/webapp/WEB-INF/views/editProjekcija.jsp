@@ -32,7 +32,7 @@
 				<form:input type="text" path="vreme" id="vreme" class="form-control" />
 			</div>	
 			<hr>
-			<input type="submit" value="<spring:message code="izmeniProjekciju" />"  class="btn btn-primary">
+			<input type="submit" value="<spring:message code="izmeni" />"  class="btn btn-primary">
 			<a href="<c:url value="/admin/projekcija/sveProjekcije"/>"
 				class="btn btn-default"><spring:message code="odustani" /></a>
 		</form:form>

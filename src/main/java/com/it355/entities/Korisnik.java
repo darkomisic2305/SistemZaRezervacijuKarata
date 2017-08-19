@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.it355.entities.data.Pol;
 
 @Entity
 @Table(name = "korisnik")
@@ -48,15 +47,14 @@ public class Korisnik implements Serializable {
 	@NotEmpty
 	@Column(name = "pol")
 	private String pol;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "datum_rodjenja")
-	private Date datumRodjenja;
+	private String datumRodjenja;
 
 	public Korisnik() {
 	}
 
 	public Korisnik(Integer id, String ime, String prezime, String email, String username, String password, String pol,
-			Date datumRodjenja) {
+			String datumRodjenja) {
 		this.id = id;
 		this.ime = ime;
 		this.prezime = prezime;
@@ -123,11 +121,11 @@ public class Korisnik implements Serializable {
 		this.pol = pol;
 	}
 
-	public Date getDatumRodjenja() {
+	public String getDatumRodjenja() {
 		return datumRodjenja;
 	}
 
-	public void setDatumRodjenja(Date datumRodjenja) {
+	public void setDatumRodjenja(String datumRodjenja) {
 		this.datumRodjenja = datumRodjenja;
 	}
 

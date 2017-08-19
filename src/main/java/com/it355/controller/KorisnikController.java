@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it355.entities.Korisnik;
 import com.it355.entities.Rezervacija;
-import com.it355.service.KorsinikService;
+import com.it355.service.KorisnikService;
 
 @Controller
 @RequestMapping("/user")
 public class KorisnikController {
 
 	@Autowired
-	private KorsinikService korisnikService;
+	private KorisnikService korisnikService;
 	
 	@RequestMapping("/profile/{username}")
 	public String profile(@PathVariable(value = "username")String username, Model model, HttpServletRequest request) {

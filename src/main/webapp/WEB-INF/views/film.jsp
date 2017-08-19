@@ -24,7 +24,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<p align="right"><strong>Originalni naslov:</strong>
+				<p align="right"><strong><spring:message code="originalniNaslov" />:</strong>
 			</div>
 			<div class="col-md-7">
 				<p align="justify">${film.originalniNaslov}</p>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<p align="right"><strong>Pocetak prikazivanja:</strong>
+				<p align="right"><strong><spring:message code="pocetakPrikazivanja" />:</strong>
 			</div>
 			<div class="col-md-7">
 				<p align="justify">${film.pocetakPrikazivanja}</p>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<p align="right"><strong>Trajanje:</strong>
+				<p align="right"><strong><spring:message code="duzinaTrajanja" />:</strong>
 			</div>
 			<div class="col-md-7">
 				<p align="left">${film.duzinaTrajanja} min.</p>
@@ -48,7 +48,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<p align="right"><strong>Drzava/Godina:</strong></p>
+				<p align="right"><strong><spring:message code="drzava" />/<spring:message code="godina" />:</strong></p>
 			</div>
 			<div class="col-md-7">
 				<p align="left">${film.drzava}/${film.godina}.</p>
@@ -56,7 +56,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<p align="right"><strong>Zanr:</strong></p>
+				<p align="right"><strong><spring:message code="zanr" />:</strong></p>
 			</div>
 			<div class="col-md-7">
 				<p align="left">${film.zanr}</p>
@@ -75,9 +75,11 @@
 	
 		<div style="margin-left: 50px; margin-right: 50px;">
 			<c:forEach items="${projekcije}" var="projekcija">
-				<a href="<c:url value="/" />" class="btn btn-primary" style="margin: 10px;">
+				
+				<a href="<c:url value="/rezervacija/${projekcija.id}" />" class="btn btn-primary" style="margin: 10px;">
 					<p>${projekcija.datum}, ${projekcija.vreme} - ${projekcija.sala.naziv}</p>
 				</a>
+					
 			</c:forEach>
 		</div>
 	</div>

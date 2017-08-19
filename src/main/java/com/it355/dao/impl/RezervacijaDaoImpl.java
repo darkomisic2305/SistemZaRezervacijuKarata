@@ -33,5 +33,12 @@ public class RezervacijaDaoImpl implements RezervacijaDao {
 		return (Rezervacija)session.createCriteria(Rezervacija.class).add(Restrictions.eq("id", id)).uniqueResult();
 	}
 
+	@Override
+	public void addRezervacija(Rezervacija rezervacija) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.save(rezervacija);
+	}
+
 	
 }

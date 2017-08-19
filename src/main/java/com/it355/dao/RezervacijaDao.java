@@ -6,4 +6,5 @@ public interface RezervacijaDao {
 	
 	public Rezervacija getRezervacijaById(int id);
 	public void deleteRezervacija(Rezervacija rezervacija);
+	public void addRezervacija(Rezervacija rezervacija);
 }

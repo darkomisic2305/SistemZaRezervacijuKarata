@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it355.entities.Rezervacija;
+import com.it355.service.ProjekcijaService;
 import com.it355.service.RezervacijaService;
 
 @Controller
@@ -25,7 +26,12 @@ public class AdminRezervacijaController {
 	public String deleteRezervacija(@PathVariable int id, Model model, HttpServletRequest request) {
 		Rezervacija rezervacija = rezervacijaService.getRezervacijaById(id);
 		rezervacijaService.deleteRezervacija(rezervacija);
+		
+		rezervacija.getProjekcija().setSlobodnoSedista(rezervacija.getProjekcija().getSlobodnoSedista()+rezervacija.getBrojKarata());
+		
+		projekcijaService.editProjekcija(rezervacija.getProjekcija());
 
 		return "redirect:/admin/projekcija/spisakRezervacija/" + rezervacija.getProjekcija().getId();
 	}
+	
 }

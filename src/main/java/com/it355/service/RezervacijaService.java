@@ -6,5 +6,5 @@ public interface RezervacijaService {
 
 	public Rezervacija getRezervacijaById(int id);
 	public void deleteRezervacija(Rezervacija rezervacija);
-
+	public void addRezervacija(Rezervacija rezervacija);
 }

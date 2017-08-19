@@ -44,8 +44,7 @@ public class Film implements Serializable {
 	@Column(name = "godina")
 	private String godina;
 	@Column(name = "zanr")
-	@Enumerated(EnumType.STRING)
-	private Zanr zanr;
+	private String zanr;
 	@NotEmpty
 	@Column(name = "opis")
 	private String opis;
@@ -60,7 +59,7 @@ public class Film implements Serializable {
 	}
 
 	public Film(Integer id, String naslov, String originalniNaslov, String pocetakPrikazivanja, int duzinaTrajanja,
-			String drzava, String godina, Zanr zanr, String opis, String youtubeUrl) {
+			String drzava, String godina, String zanr, String opis, String youtubeUrl) {
 		super();
 		this.id = id;
 		this.naslov = naslov;
@@ -130,11 +129,11 @@ public class Film implements Serializable {
 		this.godina = godina;
 	}
 
-	public Zanr getZanr() {
+	public String getZanr() {
 		return zanr;
 	}
 
-	public void setZanr(Zanr zanr) {
+	public void setZanr(String zanr) {
 		this.zanr = zanr;
 	}
 

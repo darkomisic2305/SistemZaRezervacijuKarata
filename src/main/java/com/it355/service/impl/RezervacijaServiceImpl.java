@@ -22,4 +22,9 @@ public class RezervacijaServiceImpl implements RezervacijaService {
 	public Rezervacija getRezervacijaById(int id) {
 		return rezervacijaDao.getRezervacijaById(id);
 	}
+
+	@Override
+	public void addRezervacija(Rezervacija rezervacija) {
+		rezervacijaDao.addRezervacija(rezervacija);
+	}
 }

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.it355.entities.Korisnik;
 import com.it355.entities.data.Pol;
-import com.it355.service.KorsinikService;
+import com.it355.service.KorisnikService;
 import com.it355.service.MailService;
 
 import javassist.compiler.SyntaxError;
@@ -31,7 +31,7 @@ public class RegisterController {
 	private MessageSource messageSource;
 	
 	@Autowired
-	private KorsinikService korisnikService;
+	private KorisnikService korisnikService;
 	
 	@Autowired
 	private MailService mailService;

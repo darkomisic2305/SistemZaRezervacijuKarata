@@ -48,6 +48,10 @@
 				<label for="youtubeUrl"><spring:message code="youtubeUrl" /></label> <form:errors path="youtubeUrl" cssStyle="color: #ff0000" />
 				<form:input type="text" path="youtubeUrl" id="youtubeUrl" class="form-control"/>
 			</div>
+			<div class="form-group">
+				<label for="zanr"><spring:message code="zanr" /></label> <form:errors path="zanr" cssStyle="color: #ff0000" />
+				<form:input type="text" path="zanr" id="zanr" class="form-control"/>
+			</div>
 			<hr>
 			<div class="form-group">
 				<label class="control-label" for="slika"><spring:message code="dodajSliku" /></label>
